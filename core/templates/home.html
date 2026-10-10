@@ -1,5 +1,72 @@
-{load static}
-{ extends base.html }
 
+{% extends 'base.html' %}
 
-{ include footer.html }
+{% block title %}
+    Início | Gestão de Projetos
+{% endblock %}
+
+{% block content %}
+
+<section class="card" style="text-align: center; padding: 50px 25px;">
+    <h2 style="font-size: 32px; margin-bottom: 15px;">
+        Bem-vindo ao Gestão de Projetos!
+    </h2>
+
+    <p style="font-size: 17px; color: #666; margin-bottom: 25px;">
+        Organize seus projetos, acompanhe suas tarefas
+        e mantenha tudo em um só lugar.
+    </p>
+
+    <a href="{% url 'projetos' %}" class="btn btn-primary">
+        Ver projetos
+    </a>
+
+    <a href="{% url 'tarefas' %}" class="btn btn-secondary">
+        Ver tarefas
+    </a>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 25px;">
+
+    <div class="card">
+        <h3 style="margin-bottom: 12px;">📁 Projetos</h3>
+
+        <p style="color: #666; margin-bottom: 20px;">
+            Cadastre projetos, organize suas informações
+            e acompanhe as atividades relacionadas.
+        </p>
+
+        <a href="{% url 'projetos' %}" class="btn btn-primary">
+            Gerenciar projetos
+        </a>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-bottom: 12px;">✅ Tarefas</h3>
+
+        <p style="color: #666; margin-bottom: 20px;">
+            Crie tarefas, defina prioridades,
+            associe-as aos projetos e marque as concluídas.
+        </p>
+
+        <a href="{% url 'tarefas' %}" class="btn btn-primary">
+            Gerenciar tarefas
+        </a>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-bottom: 12px;">⚙️ Administração</h3>
+
+        <p style="color: #666; margin-bottom: 20px;">
+            Acesse o painel administrativo do Django
+            para gerenciar os registros do sistema.
+        </p>
+
+        <a href="/admin/" class="btn btn-secondary">
+            Abrir administração
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}
