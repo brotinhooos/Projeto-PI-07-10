@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Tarefas
+{% endblock %}
+
+{% block content %}
+
+<div class="cabecalho">
+
+    <h2>Tarefas</h2>
+
+    <a
+        href="{% url 'criar_tarefa' %}"
+        class="btn btn-primary"
+    >
+        + Nova Tarefa
+    </a>
+
+</div>
+
+{% if tarefas %}
+
+    {% for tarefa in tarefas %}
+
+        <div class="card">
+
+            <h3>{{ tarefa.titulo }}</h3>
+
+            <p>
+                <strong>Projeto:</strong>
+                {{ tarefa.projeto.nome }}
+            </p>
+
+            <p>
+                <strong>Prioridade:</strong>
+                {{ tarefa.get_prioridade_display }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+
+                {% if tarefa.concluido %}
+                    Concluída
+                {% else %}
+                    Pendente
+                {% endif %}
+
+            </p>
+
+            <div class="acoes">
+
+                <a
+                    href="{% url 'editar_tarefa' tarefa.pk %}"
+                    class="btn btn-warning"
+                >
+                    Editar
+                </a>
+
+                <a
+                    href="{% url 'excluir_tarefa' tarefa.pk %}"
+                    class="btn btn-danger"
+                >
+                    Excluir
+                </a>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="card vazio">
+        <p>Nenhuma tarefa cadastrada.</p>
+    </div>
+
+{% endif %}
+
+{% endblock %}

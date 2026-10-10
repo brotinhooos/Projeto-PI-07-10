@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Gestão de Projetos
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <h1>Gestão de Projetos</h1>
+            <ul>
+                <li>
+                    <a href="{% url 'lista_projetos' %}">
+                        Projetos
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'lista_tarefas' %}">
+                        Tarefas
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/">
+                        Admin
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mensagem">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+</body>
+</html>
