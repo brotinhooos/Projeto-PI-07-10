@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block title %}
@@ -10,10 +11,7 @@
 
     <h2>Projetos</h2>
 
-    <a
-        href="{% url 'criar_projeto' %}"
-        class="btn btn-primary"
-    >
+    <a href="{% url 'formulario_projeto' %}" class="btn btn-primary">
         + Novo Projeto
     </a>
 
@@ -27,9 +25,7 @@
 
             <h3>{{ projeto.nome }}</h3>
 
-            <p>
-                {{ projeto.descricao }}
-            </p>
+            <p>{{ projeto.descricao }}</p>
 
             <p>
                 <strong>Data de início:</strong>
@@ -43,17 +39,13 @@
 
             <div class="acoes">
 
-                <a
-                    href="{% url 'editar_projeto' projeto.pk %}"
-                    class="btn btn-warning"
-                >
+                <a href="{% url 'editar_projeto' projeto.pk %}"
+                   class="btn btn-warning">
                     Editar
                 </a>
 
-                <a
-                    href="{% url 'excluir_projeto' projeto.pk %}"
-                    class="btn btn-danger"
-                >
+                <a href="{% url 'confirma' 'projeto' projeto.pk %}"
+                   class="btn btn-danger">
                     Excluir
                 </a>
 

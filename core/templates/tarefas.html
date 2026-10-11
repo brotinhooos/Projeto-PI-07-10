@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block title %}
@@ -10,10 +11,7 @@
 
     <h2>Tarefas</h2>
 
-    <a
-        href="{% url 'criar_tarefa' %}"
-        class="btn btn-primary"
-    >
+    <a href="{% url 'formulario_tarefa' %}" class="btn btn-primary">
         + Nova Tarefa
     </a>
 
@@ -39,28 +37,22 @@
 
             <p>
                 <strong>Status:</strong>
-
                 {% if tarefa.concluido %}
                     Concluída
                 {% else %}
                     Pendente
                 {% endif %}
-
             </p>
 
             <div class="acoes">
 
-                <a
-                    href="{% url 'editar_tarefa' tarefa.pk %}"
-                    class="btn btn-warning"
-                >
+                <a href="{% url 'editar_tarefa' tarefa.pk %}"
+                   class="btn btn-warning">
                     Editar
                 </a>
 
-                <a
-                    href="{% url 'excluir_tarefa' tarefa.pk %}"
-                    class="btn btn-danger"
-                >
+                <a href="{% url 'confirma' 'tarefa' tarefa.pk %}"
+                   class="btn btn-danger">
                     Excluir
                 </a>
 

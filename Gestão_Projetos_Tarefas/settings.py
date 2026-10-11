@@ -128,5 +128,5 @@ MAILERS = {
 }
 
 STATICFILES_DIRS=[
-    BASE_DIR/'templates',
+    BASE_DIR/'static',
 ]
