@@ -1,10 +1,14 @@
 from django.db import models
 
-# Create your models here.
+
 class Projeto(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
     data_inicio = models.DateField()
+
+    def __str__(self):
+        return self.nome
+
 
 class Tarefa(models.Model):
     PRIORIDADES = [
@@ -12,10 +16,19 @@ class Tarefa(models.Model):
         ('M', 'Média'),
         ('A', 'Alta'),
     ]
+
     titulo = models.CharField(max_length=200)
-    prioridade = models.CharField(max_length=1, choices=PRIORIDADES)
+    prioridade = models.CharField(
+        max_length=1,
+        choices=PRIORIDADES
+    )
     concluido = models.BooleanField(default=False)
-    projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='tarefas')
 
+    projeto = models.ForeignKey(
+        Projeto,
+        on_delete=models.CASCADE,
+        related_name='tarefas'
+    )
 
-
+    def __str__(self):
+        return self.titulo

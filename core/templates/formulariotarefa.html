@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if tarefa %}Editar tarefa{% else %}Nova tarefa{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="cabecalho">
+    <h2>
+        {% if tarefa %}Editar tarefa{% else %}Nova tarefa{% endif %}
+    </h2>
+</div>
+
+<div class="card">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+
+        <a href="{% url 'tarefas' %}" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </form>
+
+</div>
+
+{% endblock %}

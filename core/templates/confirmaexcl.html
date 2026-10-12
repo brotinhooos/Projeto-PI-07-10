@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirmar exclusão
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Confirmar exclusão</h2>
+
+    <p>
+        Tem certeza que deseja excluir
+        {% if tipo == 'projeto' %}
+            o projeto <strong>{{ objeto.nome }}</strong>?
+        {% else %}
+            a tarefa <strong>{{ objeto.titulo }}</strong>?
+        {% endif %}
+    </p>
+
+    {% if tipo == 'projeto' %}
+        <p>As tarefas relacionadas também serão excluídas.</p>
+    {% endif %}
+
+    <br>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">
+            Sim, excluir
+        </button>
+
+        <a href="{% url destino %}" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </form>
+
+</div>
+
+{% endblock %}
